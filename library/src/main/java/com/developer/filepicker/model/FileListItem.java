@@ -57,7 +57,9 @@ public class FileListItem implements Comparable<FileListItem> {
             return filename.toLowerCase().compareTo(fileListItem.getFilename().toLowerCase(Locale.getDefault()));
         }
         else if(!fileListItem.isDirectory()&&!isDirectory()) {
-            return filename.toLowerCase().compareTo(fileListItem.getFilename().toLowerCase(Locale.getDefault()));
+               //return filename.toLowerCase().compareTo(fileListItem.getFilename().toLowerCase(Locale.getDefault()));
+              //If the comparison is not between two directories, return the file lastModified Order newest first.
+              return Long.compare(time,fileListItem.getTime());
         }
         else if(fileListItem.isDirectory()&&!isDirectory()) {
             return 1;
